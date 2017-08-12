@@ -56,12 +56,12 @@ app.use(function(req,res,next){
 });
 
 
-
 //Trying to parse json
 var person = {
   name: "Avikaran",
   age: 27
 };
+var name = 'avikaran';
 
 //Creating an array
 var users = [
@@ -85,7 +85,8 @@ app.get('/', function(req,res){
   });*/
   console.log('hi')
  res.render('index', {
-   users: 'users'
+   users,
+   errors: [],
  }); //, { title: 'The index page!' })
 
   //res.render('try',{user: "Great User",title:"homepage"});
@@ -101,14 +102,15 @@ app.post('/users/add', function(req,res){
   req.checkBody('email', 'Email-id can not be empty').notEmpty();
 
   //Once rules are set, lets check for errors
-  var errors = req.validationErrors();
+  var errors = req.validationErrors() || [];
+  console.log("errors", errors);
   //var errors = req.getValidationResult();
 
 
-  if(errors){
+  if(errors && errors.length){
     //console.log(errors);
     res.render('index', {
-      errors:'errors'
+      errors,
     });
   }else{
     var newUser = {

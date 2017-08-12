@@ -7,13 +7,17 @@
 
     <h1> This is EJS.</h1>
     <ul>
-        <%  Array.from(users).forEach(function(user){      %>
-        <%    console.log(user.name)            %>
-            <li> <%=user.name%> </li>
-        <%  })                                  %>
+        <% for(var i=0; i<errors.length; i++) { %>
+          <li>
+              <%= errors[i].msg %>
+          </li>
+      <% } %>
 
-</ul>
-    <h1> Add User Form </h1>
+
+    </ul>
+      <h1>
+
+      Add User Form </h1>
         <form method="POST" action="/users/add">
           <label>First Name </label> </br>
           <input type="text" name="first_name"></br>
