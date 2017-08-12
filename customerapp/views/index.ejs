@@ -1,0 +1,32 @@
+<!-- hdjkas -->
+<html>
+  <head>
+    <title> My Express App </title>
+  </head>
+  <body>
+
+    <h1> This is EJS.</h1>
+    <ul>
+        <%  Array.from(users).forEach(function(user){      %>
+        <%    console.log(user.name)            %>
+            <li> <%=user.name%> </li>
+        <%  })                                  %>
+
+</ul>
+    <h1> Add User Form </h1>
+        <form method="POST" action="/users/add">
+          <label>First Name </label> </br>
+          <input type="text" name="first_name"></br>
+
+          <label>Last Name </label> </br>
+          <input type="text" name="last_name"></br>
+
+          <label>Email </label> </br>
+          <input type="text" name="email"></br><br>
+
+          <input type="submit" value="submit">
+        </form>
+
+
+  </body>
+</html>
